@@ -1,0 +1,46 @@
+syntax on
+colorscheme ir_black
+filetype plugin indent on
+set grepprg=ack
+set grepformat=%f:%l:%m
+
+set nowrap
+set number
+
+set tabstop=2
+set smarttab
+set shiftwidth=2
+set autoindent
+set expandtab
+set nocindent
+set backspace=indent,eol,start
+
+set guifont=Anonymous\ Pro:h14
+
+set hlsearch
+
+" tabs
+set showtabline=2
+map <leader>t :tabnew<CR>
+map <leader>] :tabn<CR>
+map <leader>[ :tabp<CR>
+
+map <leader>q :q<CR>
+
+" alternate
+map <leader>a :A<CR>
+"fuzzy find
+map <leader>f :FuzzyFinderFile<CR>
+map <leader>b :FuzzyFinderBuffer<CR>
+"nerd_tree
+map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+
+
+let g:alternateExtensions_js="html.haml,sass"
+let g:alternateExtensions_sass="js,html.haml"
+let g:alternateSearchPath='reg:|app/views|app/stylesheets/views|g|,reg:|app/views|app/javascripts/views|g|,reg:|app/stylesheets/views|app/views|g|,reg:|app/stylesheets/views|app/javascripts/views|g|,reg:|app/javascripts/views|app/views|g|,reg:|app/javascripts/views|app/stylesheets/views|g|'
+let g:alternateNoDefaultAlternate=1
+
+let g:fuzzy_ignore = "*.log,public/assets/*"
+let g:fuzzy_matching_limit = 150
+let g:fuzzy_ceiling = 500000
