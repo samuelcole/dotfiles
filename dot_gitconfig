@@ -1,0 +1,4 @@
+[alias]
+	sync = !git pull origin $(git name-rev --name-only HEAD) && git push origin $(git name-rev --name-only HEAD)
+[color]
+	ui = auto
