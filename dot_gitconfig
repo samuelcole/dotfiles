@@ -1,4 +1,9 @@
 [alias]
-	sync = !git pull origin $(git name-rev --name-only HEAD) && git push origin $(git name-rev --name-only HEAD)
+	sync = !git pull origin $(git branch | grep \"^*\" | sed \"s/* //\") && git push origin $(git branch | grep \"^*\" | sed \"s/* //\")
 [color]
 	ui = auto
+[user]
+	name = Samuel Cole
+	email = sam@samuelcole.name
+[merge]
+	log = true

@@ -32,7 +32,7 @@ unsetopt beep notify
 # vi editing
 bindkey -v
 
-export   PATH=$HOME/.bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:/usr/X11R6/bin:$PATH:/usr/local/bin:/opt/local/libexec/git-core/
+export   PATH=$HOME/.bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:/usr/X11R6/bin:/usr/local/mysql/bin:$PATH:/usr/local/bin:/opt/local/libexec/git-core:$HOME/.gem/ruby/1.8/bin
 export   MANPATH=/opt/local/share/man:/opt/local/man:/usr/share/export MANPATH=/opt/local/share/man:/opt/local/man:/usr/share/man:/usr/local/share/man
 export   VISUAL=vim
 export   CLICOLOR=1
@@ -67,7 +67,6 @@ alias    mem='killall memcached; memcached -d -m 32 -l 127.0.0.1 -p 11211'
 alias    current='cd ~/Code/patch/'
 alias    work='current; script/services start; ss;'
 alias    test_js="rake test:javascript; rake test:javascript_lint"
-alias    mysql="mysql5"
 alias    mpc="MPD_HOST='jukebox.local' mpc"
 checkout_with_migrations () {
   rake db:rollback_to_common branch=$1;
