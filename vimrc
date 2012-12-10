@@ -75,16 +75,6 @@ map <leader>[ :tabp<CR>
 
 map <leader>q :q<CR>
 
-" alternate
-map <leader>a :A<CR>
-"fuzzy find
-map <leader>f :FuzzyFinderFile<CR>
-map <leader>b :FuzzyFinderBuffer<CR>
-"nerd_tree
-map <leader>d :execute 'NERDTreeToggle %'<CR>
-"gundo
-map <leader>u :GundoToggle<CR>
-
 let g:fuzzy_ignore = "*.log,public/assets/*"
 let g:fuzzy_matching_limit = 150
 let g:fuzzy_ceiling = 500000
@@ -104,7 +94,3 @@ autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " clipboard!
 set clipboard=unnamed
-
-" open nerd_tree by default
-autocmd vimenter * if !argc() | NERDTree | endif
-
