@@ -32,7 +32,8 @@ unsetopt beep notify
 # vi editing
 bindkey -v
 
-export   PATH=$HOME/.bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:/usr/X11R6/bin:/usr/local/mysql/bin:$PATH:/usr/local/bin:/opt/local/libexec/git-core:$HOME/.gem/ruby/1.8/bin
+export   PATH=$HOME/.bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:/usr/X11R6/bin:/usr/local/mysql/bin:$PATH:/usr/local/bin:/opt/local/libexec/git-core:$HOME/.gem/ruby/1.8/bin:/usr/local/share/python:/usr/local/share/npm/bin
+export   NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
 export   MANPATH=/opt/local/share/man:/opt/local/man:/usr/share/export MANPATH=/opt/local/share/man:/opt/local/man:/usr/share/man:/usr/local/share/man
 export   VISUAL=vim
 export   CLICOLOR=1
@@ -45,7 +46,7 @@ setopt   PRINT_EXIT_VALUE
 export   SVN_EDITOR=vi
 export   PATH="$HOME/.bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 export   TM_RUBY=/opt/local/bin/ruby
-export   EDITOR=mvim
+export   EDITOR=vim
 
 alias    sha1sum=gsha1sum
 alias    @=$EDITOR
@@ -58,14 +59,12 @@ alias    ll="ls -l"
 alias    l.='ls -d .[^.]*'
 alias    lsd='ls -ld *(-/DN)'
 alias    ..='cd ..'
-alias    mvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
+alias    vim='/usr/local/bin/vim'
 alias    vi=vim
 alias    cls="clear"
 alias    ps="ps waux"
-alias    ss='script/server thin'
 alias    mem='killall memcached; memcached -d -m 32 -l 127.0.0.1 -p 11211'
-alias    current='cd ~/Code/patch/'
-alias    work='current; script/services start; ss;'
+alias    current='cd ~/Code/kickstarter/'
 alias    test_js="rake test:javascript; rake test:javascript_lint"
 alias    mpc="MPD_HOST='jukebox.local' mpc"
 checkout_with_migrations () {
@@ -73,6 +72,37 @@ checkout_with_migrations () {
   git checkout -m $1 && rake db:migrate;
 }
 
+# rails functions and aliases
+be () {
+  bundle exec $@;
+}
+ss () {
+  if [ -e script/rails ]; then be rails server -u $@; else be script/server -u $@; fi
+}
+sc () {
+  if [ -e script/rails ]; then be rails console $@; else be script/console $@; fi
+}
+sg () {
+  if [ -e script/rails ]; then be rails generate $@; else be script/generate $@; fi
+}
+sr () {
+  if [ -e script/rails ]; then be rails runner $@; else be script/runner $@; fi
+}
+db () {
+  if [ -e script/rails ]; then be rails dbconsole "$@"; else be script/dbconsole -p "$@"; fi
+}
+ts () {
+  be thin start --debug $@;
+}
+
+do_cap () {
+   if [ -e Gemfile ]; then
+    bundle exec cap $@
+  else
+    cap $@
+  fi
+}
+alias cap='do_cap'
 
 # Mac specific stuff
 export LSCOLORS=gxfxcxexdxbebgdbdfgfge
@@ -140,7 +170,7 @@ if [[ -x `which git` ]]; then
 		echo $?
 	}
 	function gsrb () {
-		branch=$(git-branch-name) 
+		branch=$(git-branch-name)
 		git checkout master
 		git svn rebase
 		git checkout "${branch}"
@@ -169,16 +199,16 @@ if [[ -x `which git` ]]; then
 		git config branch.$(git-branch-name).remote origin
 		git config branch.$(git-branch-name).merge refs/heads/$(git-branch-name)
 	}
-	
+
 	function github-url () {
 		git config remote.origin.url | sed -En 's/git(@|:\/\/)github.com(:|\/)(.+)\/(.+).git/https:\/\/github.com\/\3\/\4/p'
 	}
-	
+
 	# Seems to be the best OS X jump-to-github alias from http://tinyurl.com/2mtncf
 	function github-go () {
 		open $(github-url)
 	}
-	
+
 	function nhgk () {
 		nohup gitk --all &
 	}
@@ -187,3 +217,11 @@ fi
 
 setopt prompt_subst
 PROMPT='%~`git-branch-name`$ '
+
+export LANG=en_US.UTF-8
+
+#ree garbage collection
+export RUBY_HEAP_MIN_SLOTS=500000
+export RUBY_HEAP_SLOTS_INCREMENT=250000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=50000000

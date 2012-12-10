@@ -1,9 +1,30 @@
 [alias]
-	sync = !git pull origin $(git branch | grep \"^*\" | sed \"s/* //\") && git push origin $(git branch | grep \"^*\" | sed \"s/* //\")
+	sync = !legit sync \"$@\"
+	switch = !legit switch \"$@\"
+	branches = !legit branches
+	sprout = !legit sprout \"$@\"
+	unpublish = !legit unpublish \"$@\"
+	harvest = !legit harvest \"$@\"
+	publish = !legit publish \"$@\"
+	graft = !legit graft \"$@\"
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %C(cyan)%an%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 [color]
 	ui = auto
 [user]
 	name = Samuel Cole
 	email = sam@samuelcole.name
 [merge]
-	log = true
+	log = false
+	tool = vimdiff3
+[github]
+	user = samuelcole
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
+[mergetool "vimdiff3"]
+	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+[core]
+	quotepath = false
