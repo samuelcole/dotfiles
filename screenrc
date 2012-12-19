@@ -1,0 +1,6 @@
+startup_message off
+defscrollback 1000
+hardstatus alwayslastline '%{= wk}%?%-Lw%?%{r}(%{k}%n*%f%t%?(%u)%?%{r})%{k}%?%+Lw%?%?%= %m/%d %C%A'
+activity ''
+termcapinfo xterm* 'hs:ts=\\E]2;:fs=\\007:ds=\\E]2;screen\\007'
+defutf8 on
