@@ -48,66 +48,19 @@ export   PATH="$HOME/.bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/loc
 export   TM_RUBY=/opt/local/bin/ruby
 export   EDITOR=vim
 
-alias    sha1sum=gsha1sum
 alias    @=$EDITOR
 if ls -F --color=auto >&/dev/null; then
   alias  ls="ls --color=auto -F"
 else
   alias  ls="ls -F"
 fi
-alias    ll="ls -l"
-alias    l.='ls -d .[^.]*'
-alias    lsd='ls -ld *(-/DN)'
-alias    ..='cd ..'
 alias    vim='/usr/local/bin/vim'
 alias    vi=vim
-alias    cls="clear"
 alias    ps="ps waux"
-alias    mem='killall memcached; memcached -d -m 32 -l 127.0.0.1 -p 11211'
 alias    current='cd ~/Code/kickstarter/'
-alias    test_js="rake test:javascript; rake test:javascript_lint"
-alias    mpc="MPD_HOST='jukebox.local' mpc"
-checkout_with_migrations () {
-  rake db:rollback_to_common branch=$1;
-  git checkout -m $1 && rake db:migrate;
-}
-
-# rails functions and aliases
-be () {
-  bundle exec $@;
-}
-ss () {
-  if [ -e script/rails ]; then be rails server -u $@; else be script/server -u $@; fi
-}
-sc () {
-  if [ -e script/rails ]; then be rails console $@; else be script/console $@; fi
-}
-sg () {
-  if [ -e script/rails ]; then be rails generate $@; else be script/generate $@; fi
-}
-sr () {
-  if [ -e script/rails ]; then be rails runner $@; else be script/runner $@; fi
-}
-db () {
-  if [ -e script/rails ]; then be rails dbconsole "$@"; else be script/dbconsole -p "$@"; fi
-}
-ts () {
-  be thin start --debug $@;
-}
-
-do_cap () {
-   if [ -e Gemfile ]; then
-    bundle exec cap $@
-  else
-    cap $@
-  fi
-}
-alias cap='do_cap'
 
 # Mac specific stuff
 export LSCOLORS=gxfxcxexdxbebgdbdfgfge
-alias  apache4ctl="sudo /opt/local/apache2/bin/apachectl"
-
 
 # _why's majik screen titles
 # format titles for screen and rxvt
@@ -161,7 +114,6 @@ _rake () {
 
 compdef _rake rake
 if [[ -x `which git` ]]; then
-	alias g=git
 	function git-branch-name () {
 		git branch 2> /dev/null | grep '^\*' | sed 's/^\*\ /:/'
 	}
@@ -186,9 +138,6 @@ if [[ -x `which git` ]]; then
 			[ x$branch != x ] && echo " %{$dirty_color%}$branch%{$reset_color%} "
 		fi
 	}
-	function git-scoreboard () {
-		git log | grep Author | sort | uniq -ci | sort -r
-	}
 	function git-track () {
 		branch=$(git-branch-name)
 		git config branch.$branch.remote origin
@@ -209,9 +158,6 @@ if [[ -x `which git` ]]; then
 		open $(github-url)
 	}
 
-	function nhgk () {
-		nohup gitk --all &
-	}
 fi
 
 
