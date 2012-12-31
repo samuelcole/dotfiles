@@ -28,3 +28,4 @@
 	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [core]
 	quotepath = false
+	excludesfile = ~/.gitignore
