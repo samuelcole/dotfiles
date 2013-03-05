@@ -58,6 +58,7 @@ alias    vim='/usr/local/bin/vim'
 alias    vi=vim
 alias    ps="ps waux"
 alias    current='cd ~/Code/kickstarter/'
+alias    reup='cap production import'
 
 # Mac specific stuff
 export LSCOLORS=gxfxcxexdxbebgdbdfgfge
