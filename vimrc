@@ -2,7 +2,6 @@ call pathogen#infect()
 
 syntax on
 set background=dark
-let g:solarized_termcolors=16
 colorscheme solarized
 filetype plugin indent on
 set grepprg=ack
@@ -59,6 +58,7 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
+highlight ColorColumn ctermbg=9
 
 " let's get real
 nnoremap <up> <nop>
@@ -71,7 +71,7 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 
 " tabs
-set showtabline=2
+set showtabline=1
 map <leader>t :tabnew<CR>
 map <leader>] :tabn<CR>
 map <leader>[ :tabp<CR>
@@ -97,6 +97,7 @@ autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " clipboard!
 set clipboard=unnamed
+
 "
 " Jump to the next or previous line that has the same level or a lower
 " level of indentation than the current line.
