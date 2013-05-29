@@ -35,3 +35,5 @@
 [core]
 	quotepath = false
 	excludesfile = ~/.gitignore
+[credential]
+	helper = osxkeychain
