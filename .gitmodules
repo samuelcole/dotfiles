@@ -10,12 +10,12 @@
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/vim-javascript"]
-	path = vim/bundle/vim-javascript
-	url = git://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundle/quickfixsigns_vim"]
 	path = vim/bundle/quickfixsigns_vim
 	url = git://github.com/tomtom/quickfixsigns_vim.git
 [submodule "vim/bundle/vim-fakeclip"]
 	path = vim/bundle/vim-fakeclip
 	url = git://github.com/kana/vim-fakeclip.git
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = git@github.com:pangloss/vim-javascript.git
