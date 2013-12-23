@@ -32,7 +32,7 @@ unsetopt beep notify
 # vi editing
 bindkey -v
 
-export   PATH=$HOME/.bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:/usr/X11R6/bin:/usr/local/mysql/bin:$PATH:/usr/local/bin:/opt/local/libexec/git-core:$HOME/.gem/ruby/1.8/bin:/usr/local/share/python:/usr/local/share/npm/bin
+export   PATH=$HOME/.bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:/usr/X11R6/bin:/usr/local/mysql/bin:$PATH:/usr/local/bin:/opt/local/libexec/git-core:$HOME/.gem/ruby/1.8/bin:/usr/local/share/npm/bin
 export   NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
 export   MANPATH=/opt/local/share/man:/opt/local/man:/usr/share/export MANPATH=/opt/local/share/man:/opt/local/man:/usr/share/man:/usr/local/share/man
 export   VISUAL=vim
@@ -149,3 +149,11 @@ export RUBY_GC_MALLOC_LIMIT=50000000
 # Adds github helpers to git, install with
 # brew install hub
 eval "$(hub alias -s)"
+
+# brew install direnv
+eval "$(direnv hook $0)"
+
+# brew made me do it. better run-help for zsh commands
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/helpfiles
