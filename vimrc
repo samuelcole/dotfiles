@@ -43,7 +43,7 @@ let g:syntastic_auto_loc_list=1
 let g:NodelintConfig = $HOME.'/Code/kickstarter/test/javascripts/lint-options.js'
 
 let g:quickfixsigns_classes = ['vcsdiff']
-let g:quickfixsigns_class_vcsdiff = {'sign': '*quickfixsigns#vcsdiff#Signs', 'get': 'quickfixsigns#vcsdiff#GetList(%s)', 'event': ['BufWritePost'], 'level': 6}
+let g:quickfixsigns_class_vcsdiff = {'sign': '*quickfixsigns#vcsdiff#Signs', 'get': 'quickfixsigns#vcsdiff#GetList(%s)', 'event': ['BufEnter,BufWritePost'], 'level': 6}
 
 " search
 set ignorecase
