@@ -1,5 +1,7 @@
 #!/bin/sh
 
+git submodule update --init
+
 for name in *; do
   target="$HOME/.$name"
   if [ ! -e "$target" ]; then
