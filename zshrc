@@ -32,7 +32,7 @@ unsetopt beep notify
 # vi editing
 bindkey -v
 
-export   PATH=$HOME/.bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:/usr/X11R6/bin:/usr/local/mysql/bin:$PATH:/usr/local/bin:/opt/local/libexec/git-core:$HOME/.gem/ruby/1.8/bin:/usr/local/share/npm/bin
+export   PATH=$HOME/.bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:/usr/X11R6/bin:/usr/local/mysql/bin:$PATH:/opt/local/libexec/git-core:$HOME/.gem/ruby/1.8/bin:/usr/local/share/npm/bin
 export   NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
 export   MANPATH=/opt/local/share/man:/opt/local/man:/usr/share/export MANPATH=/opt/local/share/man:/opt/local/man:/usr/share/man:/usr/local/share/man
 export   VISUAL=vim
@@ -44,7 +44,6 @@ setopt   CHASE_LINKS
 setopt   NUMERIC_GLOB_SORT
 setopt   PRINT_EXIT_VALUE
 export   SVN_EDITOR=vi
-export   PATH="$HOME/.bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 export   TM_RUBY=/opt/local/bin/ruby
 export   EDITOR=vim
 
@@ -143,3 +142,5 @@ eval "$(direnv hook $0)"
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/helpfiles
+
+eval "$(rbenv init -)"
