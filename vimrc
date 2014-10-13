@@ -1,7 +1,7 @@
 call pathogen#infect()
 
 syntax on
-set background=light
+set background=dark
 colorscheme solarized
 filetype plugin indent on
 set grepprg=ack
