@@ -1,3 +1,6 @@
 *swp
 *un~
 .envrc
+.lvimrc
+.rake_tasks
+.DS_Store
