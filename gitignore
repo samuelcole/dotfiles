@@ -4,3 +4,4 @@
 .lvimrc
 .rake_tasks
 .DS_Store
+.idea/
