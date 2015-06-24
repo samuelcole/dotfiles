@@ -1,7 +1,7 @@
 call pathogen#infect()
 
 syntax on
-set background=dark
+set background=light
 colorscheme solarized
 filetype plugin indent on
 set grepprg=ack
@@ -40,6 +40,7 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}\ %{SyntasticStatuslineFlag()
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
+let g:syntastic_javascript_checkers = ['jsxhint']
 let g:NodelintConfig = $HOME.'/Code/kickstarter/test/javascripts/lint-options.js'
 
 let g:quickfixsigns_classes = ['vcsdiff']
@@ -99,6 +100,13 @@ autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " clipboard!
 set clipboard=unnamed
+
+" rspec
+let g:rspec_command = "Dispatch bin/rspec {spec}"
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 "
 " Jump to the next or previous line that has the same level or a lower
