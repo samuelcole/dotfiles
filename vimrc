@@ -40,7 +40,9 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}\ %{SyntasticStatuslineFlag()
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
-let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_args = '--ext .jsx --ext .js'
+let g:syntastic_ruby_checkers = ['rubocop']
 let g:NodelintConfig = $HOME.'/Code/kickstarter/test/javascripts/lint-options.js'
 
 let g:quickfixsigns_classes = ['vcsdiff']

@@ -32,7 +32,7 @@ unsetopt beep notify
 # vi editing
 bindkey -v
 
-export   PATH=$HOME/.bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:/usr/X11R6/bin:/usr/local/mysql/bin:$PATH:/opt/local/libexec/git-core:$HOME/.gem/ruby/1.8/bin:/usr/local/share/npm/bin
+export   PATH=$HOME/.bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/opt/local/apache2/bin:/usr/X11R6/bin:/usr/local/mysql/bin:/usr/local/sbin:$PATH:/opt/local/libexec/git-core:$HOME/.gem/ruby/1.8/bin:/usr/local/share/npm/bin:~/Code/arcanist/bin
 export   NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
 export   MANPATH=/opt/local/share/man:/opt/local/man:/usr/share/export MANPATH=/opt/local/share/man:/opt/local/man:/usr/share/man:/usr/local/share/man
 export   VISUAL=vim
@@ -119,7 +119,6 @@ if [[ -x `which git` ]]; then
 	}
 fi
 
-
 setopt prompt_subst
 PROMPT='%~`git-branch-name`$ '
 
@@ -137,4 +136,10 @@ unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/helpfiles
 
+LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+  . $LUNCHY_DIR/lunchy-completion.zsh
+fi
+
+eval "$(nodenv init -)"
 eval "$(rbenv init -)"
